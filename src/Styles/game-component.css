@@ -1,0 +1,11 @@
+.full-game-container {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(6, auto);
+    place-items: center;
+    place-content: center;
+    grid-row-gap: 25px;
+    grid-column-gap: 15px;
+    background-color: var(--game-bg);
+}

@@ -1,0 +1,20 @@
+:root {
+  --start-game-bg: #141414;
+  --game-bg: #000;
+  --btn-play-bg: #C10B29;
+  --btn-play-hover-bg: #E70D32;
+  --heart-word-color: rgb(252, 60, 60);
+  --card-outline-color: rgba(255, 255, 255, .3452);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+}

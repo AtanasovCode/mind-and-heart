@@ -1,0 +1,167 @@
+:root {
+    --first-pos-y: 0%;
+    --second-pos-y: 9%;
+    --third-pos-y: 18%;
+    --fourth-pos-y: 27%;
+    --fifth-pos-y: 34.8%;
+
+    --first-pos-x: -1%;
+    --second-pos-x: -5%;
+    --third-pos-x: -10%;
+    --fourth-pos-x: -15%;
+    --fifth-pos-x: -20%;
+}
+
+.start-game-full-container {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--start-game-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background-image: url('../Assets//Images//playing-cards-bg.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.game-start-info-container {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.game-start-heading {
+    font-size: 27px;
+    height: 80px;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+
+.game-start-subtitle {
+    opacity: .7;
+    font-size: 15px;
+}
+
+.game-start-btn-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.word-heart {
+    color: var(--heart-word-color);
+    font-family: 'Righteous', cursive;
+}
+
+.game-start-btn {
+    width: 170px;
+    height: 45px;
+    background-color: var(--btn-play-bg);
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.game-start-btn:hover {
+    background-color: var(--btn-play-hover-bg);
+    filter: brightness(200%);
+}
+
+
+/*Card Icons*/
+
+.card-icon {
+    transition: all .65s ease;
+}
+
+.card-icon:hover {
+    transform: translateY(-70px);
+    transition: all .65s ease;
+}
+
+/*Clubs*/
+
+.king-black-icon {
+    position: absolute;
+    bottom: var(--first-pos-x);
+    left: var(--first-pos-y);
+    z-index: 0;
+}
+
+.ace-black-icon {
+    position: absolute;
+    bottom: var(--second-pos-x);
+    left: var(--second-pos-y);
+    z-index: 1;
+}
+
+.queen-black-icon {
+    position: absolute;
+    bottom: var(--third-pos-x);
+    left: var(--third-pos-y);
+    z-index: 2;
+}
+
+.four-black-icon {
+    position: absolute;
+    bottom: var(--fourth-pos-x);
+    left: var(--fourth-pos-y);
+    z-index: 3;
+}
+
+.five-black-icon {
+    position: absolute;
+    bottom: var(--fifth-pos-x);
+    left: var(--fifth-pos-y);
+    z-index: 4;
+}
+
+/*Hearts*/
+
+.ace-hearts-icon {
+    position: absolute;
+    bottom: var(--fifth-pos-x);
+    right: var(--fifth-pos-y);
+    z-index: 4;
+}
+
+.king-hearts-icon {
+    position: absolute;
+    bottom: var(--fourth-pos-x);
+    right: var(--fourth-pos-y);
+    z-index: 3;
+}
+
+.six-hearts-icon {
+    position: absolute;
+    bottom: var(--third-pos-x);
+    right: var(--third-pos-y);
+    z-index: 2;
+}
+
+.eight-hearts-icon {
+    position: absolute;
+    bottom: var(--second-pos-x);
+    right: var(--second-pos-y);
+    z-index: 1;
+}
+
+
+.four-hearts-icon {
+    position: absolute;
+    bottom: var(--first-pos-x);
+    right: var(--first-pos-y);
+    z-index: 0;
+}
