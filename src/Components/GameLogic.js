@@ -5,16 +5,11 @@ import GameStart from './GameStart';
 const GameLogic = () => {
 
     const [displayGame, setDisplayGame] = useState(0);
-    const [cardsDisplayed, setCardsDisplayed] = useState('');
-
 
     const display = () => {
         if (displayGame === 1) {
             return (
-                <GameComponent 
-                    cardsDisplayed={cardsDisplayed}
-                    setCardsDisplayed={setCardsDisplayed}
-                />
+                <GameComponent />
             );
         }
         if (displayGame === 0) {
