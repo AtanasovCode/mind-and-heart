@@ -1,29 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import Card from '../Card';
 
+
 const Level1 = ({
     possibleNumbers,
+    numOfCards,
 }) => {
 
     const [numbersDisplayed, setNumbersDisplayed] = useState([]);
     const [index, setIndex] = useState(0);
-    const [index2, setIndex2] = useState(1);
-    const [index3, setIndex3] = useState(2);
-    const [withoutDuplicates, setWithoutDuplicates] = useState([]);
-    const [shuffledNumbers, setShuffledNumbers] = useState([]);
-
-
-    const checkForDuplicates = (array) => {
-        const result = array.some(element => {
-            if (array.indexOf(element) !== array.lastIndexOf(element)) {
-                array.indexOf(element = element + 1);
-            }
-
-            return array;
-        });
-
-        return result;
-    }
 
     const randomNumberIdx = () => {
         return Math.floor(Math.random() * possibleNumbers.length);
@@ -47,55 +32,38 @@ const Level1 = ({
     }
 
     useEffect(() => {
-        for (let i = 0; i < 3; i++) {
+        for (let i = 0; i < {numOfCards}; i++) {
             setNumbersDisplayed(current => [...current, `${possibleNumbers[randomNumberIdx()]}`]);
             console.log("Setting up numbers...");
         }
     }, [Card])
 
     useEffect(() => {
-    //  setWithoutDuplicates([...new Set(numbersDisplayed)]);
-        setShuffledNumbers(shuffleArray(numbersDisplayed))
+        shuffleArray(numbersDisplayed);
     }, [numbersDisplayed]);
 
-
-    //useEffect(() => {
-    //    setWithoutDuplicates(shuffledNumbers);
-    //}, [shuffledNumbers])
 
 
 
     return (
-        <div>
+        <div className="full-cards-container">
             <Card
                 index={index}
                 numbersDisplayed={numbersDisplayed}
-                withoutDuplicates={withoutDuplicates}
-                setWithoutDuplicates={setWithoutDuplicates}
-                shuffledNumbers={shuffledNumbers}
-                setShuffledNumbers={setShuffledNumbers}
+                setNumbersDisplayed={setNumbersDisplayed}
                 shuffleArray={shuffleArray}
-                checkForDuplicates={checkForDuplicates}
             />
             <Card
-                index={index2}
+                index={index + 1}
                 numbersDisplayed={numbersDisplayed}
-                withoutDuplicates={withoutDuplicates}
-                setWithoutDuplicates={setWithoutDuplicates}
-                shuffledNumbers={shuffledNumbers}
-                setShuffledNumbers={setShuffledNumbers}
+                setNumbersDisplayed={setNumbersDisplayed}
                 shuffleArray={shuffleArray}
-                checkForDuplicates={checkForDuplicates}
             />
             <Card
-                index={index3}
+                index={index + 2}
                 numbersDisplayed={numbersDisplayed}
-                withoutDuplicates={withoutDuplicates}
-                setWithoutDuplicates={setWithoutDuplicates}
-                shuffledNumbers={shuffledNumbers}
-                setShuffledNumbers={setShuffledNumbers}
+                setNumbersDisplayed={setNumbersDisplayed}
                 shuffleArray={shuffleArray}
-                checkForDuplicates={checkForDuplicates}
             />
         </div>
     );

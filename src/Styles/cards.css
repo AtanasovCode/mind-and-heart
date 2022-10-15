@@ -1,0 +1,42 @@
+.full-cards-container {
+    display: flex;
+}
+
+.card-container {
+    width: 150px;
+    height: 220px;
+    background-color: black;
+    border: 1px solid var(--card-outline-color);
+    border-radius: 12px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Righteous', cursive;
+    position: relative;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+    margin: 15px;
+}
+
+.card-number {
+    position: absolute;
+    top: 3%;
+    left: 6%;
+    font-size: 22px;
+}
+
+.card-icon-small {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 20%;
+    left: 5%;
+}
+
+.card-icon-large {
+    width: 70px;
+    height: 70px;
+}
