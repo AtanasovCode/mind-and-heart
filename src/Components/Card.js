@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 
 const Card = ({
     index, 
-    withoutDuplicates, 
-    setWithoutDuplicates,
     numbersDisplayed,
     shuffledNumbers, 
     setShuffledNumbers,
