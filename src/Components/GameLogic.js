@@ -6,6 +6,10 @@ const GameLogic = () => {
 
     const [displayGame, setDisplayGame] = useState(0);
 
+    useEffect(() => {
+        console.log("Start Game Component Rendered");
+    }, [GameStart])
+
     const display = () => {
         if (displayGame === 1) {
             return (

@@ -9,35 +9,47 @@ import diamondsIcon from '../Assets/Images/card-components/diamonds-icon.png';
 const CardComponent = ({
     numbersDisplayed,
     setNumbersDisplayed,
-    number,
-    setNumber,
+    numberToDisplay,
+    possibleNumbers,
+    shuffledNumbers,
+    setShuffeldNumbers,
+    getShuffledCards,
     numberId,
+    removeUndefined,
+    shuffleArray,
     icon,
     onCardClick,
-    shuffeledArray,
-    setShuffeledArray,
 }) => {
 
     const [currentNumber, setCurrentNumber] = useState();
-    const convertSymbol = () => {
-        let symbol = `${icon}`;
-        if (symbol === 'Hearts') return `${heartsIcon}`;
-        if (symbol === 'Clubs') return `${clubsIcon}`;
-        if (symbol === 'Spades') return `${spadesIcon}`;
-        if (symbol === 'Diamonds') return `${diamondsIcon}`;
+    const [currentIcon, setCurrentIcon] = useState();
+
+    const convertIcon = () => {
+        let randomIcon = `${icon}`;
+        if (randomIcon === 'Hearts') return `${heartsIcon}`;
+        if (randomIcon === 'Clubs') return `${clubsIcon}`;
+        if (randomIcon === 'Spades') return `${spadesIcon}`;
+        if (randomIcon === 'Diamonds') return `${diamondsIcon}`;
     }
 
-
     useEffect(() => {
-        setCurrentNumber(number[numberId])
-    }, [CardComponent]);
+        setCurrentNumber(possibleNumbers[numberId]);
+        setCurrentIcon(convertIcon());
+        console.log("Card Component Loaded");
+    }, [CardComponent])
 
     useEffect(() => {
         setNumbersDisplayed(current => [...current, `${currentNumber}`]);
-    }, [currentNumber])
+        console.log(`currentNumber Updated: ${currentNumber}`);
+    }, [currentNumber]);
 
 
-
+    useEffect(() => {
+        document.querySelector(".card-container").addEventListener("click", onCardClick);
+        return () => {
+            document.querySelector(".card-container").removeEventListener("click", onCardClick);
+        }
+    }, [onCardClick])
 
     //setTheArray(oldArray => [...oldArray, newElement]);
     //setCardsDisplayed(current => [...current, {cardNumber}])
@@ -48,15 +60,15 @@ const CardComponent = ({
             <div className="card-number">
                 {currentNumber}
             </div>
-            <div className="card-symbol-small">
+            <div className="card-randomIcon-small">
                 <img
-                    src={`${convertSymbol()}`}
+                    src={`${currentIcon}`}
                     className="card-icon-large"
                 />
             </div>
-            <div className="card-symbol-large">
+            <div className="card-randomIcon-large">
                 <img
-                    src={`${convertSymbol()}`}
+                    src={`${currentIcon}`}
                     className="card-icon-small"
                 />
             </div>
