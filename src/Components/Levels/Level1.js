@@ -15,9 +15,14 @@ const Level1 = ({
     const [numbersDisplayed, setNumbersDisplayed] = useState([]);
     const [iconsDisplayed, setIconsDisplayed] = useState([]);
     const [index, setIndex] = useState(0);
+    const [cardOrder, setCardOrder] = useState([]);
 
     const randomNumberIdx = () => {
         return Math.floor(Math.random() * possibleNumbers.length);
+    }
+
+    const randomCardIdx = () => {
+        return Math.floor(Math.random() * numOfCards);
     }
 
     const randomIcon = () => {
@@ -26,22 +31,20 @@ const Level1 = ({
             return 'Hearts';
         } else if (number === 2) {
             return 'Clubs';
-        }else if(number === 3) {
+        } else if (number === 3) {
             return 'Spades';
-        }else if(number === 4) {
+        } else if (number === 4) {
             return 'Diamonds';
         }
     }
 
     const convertIcon = () => {
         let icon = `${randomIcon()}`
-        if(icon === 'Hearts') return `${hearts}`;
-        if(icon === 'Clubs') return `${clubs}`;
-        if(icon === 'Spades') return `${spades}`;
-        if(icon === 'Diamonds') return `${diamonds}`;
+        if (icon === 'Hearts') return `${hearts}`;
+        if (icon === 'Clubs') return `${clubs}`;
+        if (icon === 'Spades') return `${spades}`;
+        if (icon === 'Diamonds') return `${diamonds}`;
     }
-
-
 
     const shuffleArray = (array) => {
         let currentIndex = array.length, randomIndex;
@@ -59,49 +62,49 @@ const Level1 = ({
         }
         return array;
     }
-
     useEffect(() => {
         for (let i = 0; i < parseInt(numOfCards); i++) {
+            console.log("Setting up cards...");
             setNumbersDisplayed(current => [...current, `${possibleNumbers[randomNumberIdx()]}`]);
             setIconsDisplayed(current => [...current, `${convertIcon()}`]);
-            console.log("Setting up numbers...");
+            setCardOrder(current => [...current, i]);
         }
     }, [Card])
 
-    //useEffect(() => {
-    //    shuffleArray(numbersDisplayed);
-    //}, [numbersDisplayed]);
+    const onCardClick = () => {
+        console.log("Shuffling...");
+        setCardOrder([...shuffleArray(cardOrder)]);
+    }
 
 
+
+    const cardArr = [
+        <Card
+            index={index}
+            numbersDisplayed={numbersDisplayed}
+            iconsDisplayed={iconsDisplayed}
+            onCardClick={onCardClick} 
+        />,
+        <Card
+            index={index + 1}
+            numbersDisplayed={numbersDisplayed}
+            iconsDisplayed={iconsDisplayed}
+            onCardClick={onCardClick} 
+        />,
+        <Card
+            index={index + 2}
+            numbersDisplayed={numbersDisplayed}
+            iconsDisplayed={iconsDisplayed}
+            onCardClick={onCardClick} 
+        />
+    ];
 
 
     return (
         <div className="full-cards-container">
-            <Card
-                index={index}
-                numbersDisplayed={numbersDisplayed}
-                setNumbersDisplayed={setNumbersDisplayed}
-                iconsDisplayed={iconsDisplayed}
-                setIconsDisplayed={setIconsDisplayed}
-                shuffleArray={shuffleArray}
-
-            /> 
-            <Card
-                index={index + 1}
-                numbersDisplayed={numbersDisplayed}
-                setNumbersDisplayed={setNumbersDisplayed}
-                iconsDisplayed={iconsDisplayed}
-                setIconsDisplayed={setIconsDisplayed}
-                shuffleArray={shuffleArray}
-            />
-            <Card
-                index={index + 2}
-                numbersDisplayed={numbersDisplayed}
-                setNumbersDisplayed={setNumbersDisplayed}
-                iconsDisplayed={iconsDisplayed}
-                setIconsDisplayed={setIconsDisplayed}
-                shuffleArray={shuffleArray}
-            />
+            {cardArr[cardOrder[0]]}
+            {cardArr[cardOrder[1]]}
+            {cardArr[cardOrder[2]]}
         </div>
     );
 }

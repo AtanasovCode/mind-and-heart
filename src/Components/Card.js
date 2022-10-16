@@ -5,22 +5,16 @@ import '../Styles/cards.css';
 const Card = ({
     index,
     numbersDisplayed,
-    setNumbersDisplayed,
     iconsDisplayed,
-    setIconsDisplayed,
-    shuffleArray,
+    onCardClick,
 }) => {
-
-    const [currentNumber, setCurrentNumber] = useState(numbersDisplayed[index]);
-    const [currentIcon, setCurrentIcon] = useState(iconsDisplayed[index])
-
-
-    const onCardClick = () => {
-        //console.log(numbersDisplayed);
-        //console.log(iconsDisplayed);
-        setNumbersDisplayed([...shuffleArray(numbersDisplayed)]);
-        setIconsDisplayed([...shuffleArray(iconsDisplayed)])
-    }
+    
+    
+    //To shuffle the numbers and icons already rendered on the DOM
+     //const onCardClick = () => {
+        //setNumbersDisplayed([...shuffleArray(numbersDisplayed)]);
+        //setIconsDisplayed([...shuffleArray(iconsDisplayed)]);
+    //}
 
     return (
         <div className="card-container" onClick={onCardClick}>
