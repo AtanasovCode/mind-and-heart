@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import GameComponent from './GameComponent';
 import GameStart from './GameStart';
+import Loading from './Loading';
 
 const GameLogic = () => {
 

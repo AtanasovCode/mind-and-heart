@@ -9,3 +9,18 @@
     grid-column-gap: 15px;
     background-color: var(--game-bg);
 }
+
+
+.btn-for-testing {
+    width: 170px;
+    height: 45px;
+    text-align: center;
+    background-color: #fff;
+    color: #000;
+    font-size: 20px;
+}
+
+.test {
+    color: #fff;
+    font-size: 27px;
+}

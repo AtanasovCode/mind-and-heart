@@ -1,6 +1,7 @@
 import '../Styles/game-component.css';
 import Level1 from './Levels/Level1';
 import React, { useState, useEffect } from 'react';
+import GameFailed from './GameFailed';
 
 const GameComponent = () => {
 
@@ -8,11 +9,21 @@ const GameComponent = () => {
 
 
     const displayLevel = () => {
+        if(level === 0) {
+            return (
+                <GameFailed  
+                    level={level}
+                    setLevel={setLevel}
+                />
+            );
+        }
         if (level === 1) {
             return (
                 <Level1 
                     possibleNumbers={possibleNumbers}
                     numOfCards={3}
+                    level={level}
+                    setLevel={setLevel}
                 />
             );
         }

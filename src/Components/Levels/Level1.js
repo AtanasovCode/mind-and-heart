@@ -10,12 +10,16 @@ import diamonds from '../../Assets/Images/card-components/diamonds.png';
 const Level1 = ({
     possibleNumbers,
     numOfCards,
+    level,
+    setLevel,
 }) => {
 
     const [numbersDisplayed, setNumbersDisplayed] = useState([]);
     const [iconsDisplayed, setIconsDisplayed] = useState([]);
     const [index, setIndex] = useState(0);
     const [cardOrder, setCardOrder] = useState([]);
+    const [numbersClicked, setNumbersClicked] = useState([]);
+
 
     const randomNumberIdx = () => {
         return Math.floor(Math.random() * possibleNumbers.length);
@@ -23,6 +27,10 @@ const Level1 = ({
 
     const randomCardIdx = () => {
         return Math.floor(Math.random() * numOfCards);
+    }
+
+    const hasDuplicates = (array) => {
+        return (new Set(array)).size !== array.length;
     }
 
     const randomIcon = () => {
@@ -71,10 +79,18 @@ const Level1 = ({
         }
     }, [Card])
 
-    const onCardClick = () => {
-        console.log("Shuffling...");
+    const onCardClick = (e) => {
+        let id = e.currentTarget.id;
+        setNumbersClicked(current => [...current, `${id}`]);
         setCardOrder([...shuffleArray(cardOrder)]);
+        console.log("Shuffling...");
     }
+
+    useEffect(() => {
+        if(hasDuplicates(numbersClicked)) {
+            setLevel(level - level)
+        }
+    }, [onCardClick])
 
 
 
@@ -84,18 +100,23 @@ const Level1 = ({
             numbersDisplayed={numbersDisplayed}
             iconsDisplayed={iconsDisplayed}
             onCardClick={onCardClick} 
+            numbersClicked={numbersClicked}
+            level={level}
+            setLevel={setLevel}
         />,
         <Card
             index={index + 1}
             numbersDisplayed={numbersDisplayed}
             iconsDisplayed={iconsDisplayed}
             onCardClick={onCardClick} 
+            numbersClicked={numbersClicked}
         />,
         <Card
             index={index + 2}
             numbersDisplayed={numbersDisplayed}
             iconsDisplayed={iconsDisplayed}
             onCardClick={onCardClick} 
+            numbersClicked={numbersClicked}
         />
     ];
 

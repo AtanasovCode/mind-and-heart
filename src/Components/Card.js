@@ -7,17 +7,13 @@ const Card = ({
     numbersDisplayed,
     iconsDisplayed,
     onCardClick,
+    numbersClicked,
+    level,
+    setLevel,
 }) => {
-    
-    
-    //To shuffle the numbers and icons already rendered on the DOM
-     //const onCardClick = () => {
-        //setNumbersDisplayed([...shuffleArray(numbersDisplayed)]);
-        //setIconsDisplayed([...shuffleArray(iconsDisplayed)]);
-    //}
 
     return (
-        <div className="card-container" onClick={onCardClick}>
+        <div className="card-container" id={`${index}`} onClick={onCardClick}>
             <div className="card-number">
                 {numbersDisplayed[index]}
             </div>
