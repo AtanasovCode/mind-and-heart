@@ -12,6 +12,7 @@ const GameComponent = () => {
             return (
                 <Level1 
                     possibleNumbers={possibleNumbers}
+                    numOfCards={3}
                 />
             );
         }
@@ -21,13 +22,6 @@ const GameComponent = () => {
         'A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'
     ]);
 
-    //const [icon, setIcon] = useState(['0', 'Hearts', 'Clubs', 'Spades', 'Diamonds'])
-
-    //const removeUndefined = (array) => {
-    //    array.filter(element => {
-    //        return element !== "undefined";
-    //    })
-    //}
 
 
     return (
